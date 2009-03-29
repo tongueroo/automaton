@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name    = 'automaton'
   s.version = '0.1.0'
-  s.date    = '2009-03-28'
+  s.date    = '2009-03-29'
   
   s.summary     = "Automate everything!"
   s.description = "Automate everything!"
@@ -15,5 +15,21 @@ Gem::Specification.new do |s|
   s.has_rdoc = false
   
   # = MANIFEST =
+  s.files = %w[
+    CHANGELOG.markdown
+    MIT-LICENSE
+    README.markdown
+    Rakefile
+    bin/auto
+    gem_template.gemspec
+    install
+    lib/automaton.rb
+    lib/automaton/plugins.rb
+    spec/fixtures/plugin/lib/plugin.rb
+    spec/lib/automaton.rb
+    spec/lib/automaton/plugins.rb
+    spec/spec.opts
+    spec/spec_helper.rb
+  ]
   # = MANIFEST =
 end
