@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+LOAD_AUTOMATON_PLUGINS = false
+
 require 'rubygems'
 require 'automaton'
 

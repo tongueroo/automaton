@@ -9,6 +9,7 @@ module Automaton
       end
       it 'should require plugin library files' do
         $".include?("#{SPEC}/fixtures/plugin/lib/plugin.rb").should == true
+        $".include?("#{SPEC}/fixtures/plugin2/lib/plugin2.rb").should == true
       end
     end
   end

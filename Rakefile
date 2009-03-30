@@ -1,4 +1,6 @@
 require 'rake'
+require 'rubygems'
+require 'spec/rake/spectask'
 
 GEM_NAME = 'automaton'
 task :default => "#{GEM_NAME}.gemspec"
@@ -29,4 +31,10 @@ task :install do
   `gem build #{GEM_NAME}.gemspec`
   `sudo gem install #{GEM_NAME}*.gem`
   `rm #{GEM_NAME}*.gem`
+end
+
+desc "Run specs"
+Spec::Rake::SpecTask.new do |t|
+  t.spec_opts = ["--format", "specdoc", "--colour"]
+  t.spec_files = FileList["spec/**/*_spec.rb"]
 end

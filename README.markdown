@@ -3,6 +3,11 @@ Automaton
 
 Automate everything!
 
+Notice
+------
+
+This gem is in development. Functionality updates will show up in this file.
+
 Goals
 -----
 
@@ -20,5 +25,6 @@ Install
 -------
 
 <pre>
+gem sources -a http://gems.github.com
 sudo gem install winton-automaton
 </pre>
