@@ -1,6 +1,0 @@
-ropen:
-  repo: git://github.com/codahale/ropen.git
-  path: vendor
-terminal-table:
-  repo: git://github.com/visionmedia/terminal-table.git
-  path: vendor

@@ -1,1 +1,0 @@
-puts "no shebang, no +x, no service"
