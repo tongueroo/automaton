@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-LOAD_AUTOMATON_PLUGINS = false
+AUTOMATON_ENV = false
 $:.push File.expand_path("#{File.dirname(__FILE__)}/../lib")
 require 'automaton'
 Automaton::Internal::Auto.new(ARGV)

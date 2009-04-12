@@ -10,7 +10,6 @@ module Automaton
       class <<self
 
         def require!
-          return if defined?(LOAD_AUTOMATON_PLUGINS) && !LOAD_AUTOMATON_PLUGINS
           Plugins.libraries.each do |library|
             require library
             begin

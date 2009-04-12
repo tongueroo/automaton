@@ -14,7 +14,7 @@ module Automaton
         $".include?("#{SPEC}/fixtures/plugin2/lib/plugin2.rb").should == true
       end
       
-      it 'should include the plugin library modules' do
+      it 'should include plugin library modules' do
         runner = Runner.new
         runner.public_methods.include?('plugin').should == true
         runner.public_methods.include?('plugin2').should == true

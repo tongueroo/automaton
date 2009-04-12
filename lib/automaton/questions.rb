@@ -17,18 +17,23 @@ module Automaton
       
       def questions(&block)
         Questions.running = true
-        yield
+        yield if block
         Questions.running = false
+        if Questions.raise_exception_when_finished
+          raise QuestionsFinished
+        end
       end
       
       class Questions
         
+        @@order = []
         @@questions = {}
-        cattr_accessor :running, :questions
+        cattr_accessor :order, :questions, :raise_exception_when_finished, :running
         
         class <<self
           
           def []=(method, value)
+            @@order << method
             @@questions[method] = value
           end
         
@@ -36,6 +41,9 @@ module Automaton
             @@questions[method]
           end
         end
+      end
+      
+      class QuestionsFinished < StandardError
       end
     end
   end

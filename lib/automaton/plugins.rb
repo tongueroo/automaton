@@ -5,6 +5,8 @@ module Automaton
       @@directory = File.expand_path("~/.auto")
       @@plugins = nil
       
+      cattr_reader :directory
+      
       class <<self
                 
         def directory=(path)
