@@ -1,11 +1,7 @@
 module Automaton
-  class Plugin
-    def task
-      
+  module Plugin
+    def plugin
+      true
     end
   end
-end
-
-def plugin
-  Automaton::Plugin.new
 end
