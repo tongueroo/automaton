@@ -2,24 +2,29 @@ module Automaton
   module Internal
     class Plugins
       
-      @@directory = File.expand_path("~/.auto")
+      @@directories = [
+        "~/.auto",
+        "#{File.dirname(__FILE__)}/../../vendor/plugins"
+      ]
       @@plugins = nil
       
-      cattr_reader :directory
+      cattr_accessor :directories
       
       class <<self
                 
-        def directory=(path)
-          @@directory = path
+        def add(path)
+          @@directories << path
+          @@directories.uniq!
           @@plugins = nil
         end
         
         def plugins
           return @@plugins if @@plugins
-          # Find directories in ~/.auto (plugins)
-          directories = Dir["#{@@directory}/*/"]
-          @@plugins = directories.collect do |directory|
-            Plugin.new(directory)
+          directories = @@directories.collect do |d|
+            File.expand_path("#{d}/*/")
+          end
+          @@plugins = Dir[*directories].collect do |d|
+            Plugin.new(d)
           end
           @@plugins.compact!
           @@plugins
@@ -56,11 +61,11 @@ module Automaton
           # Only downcase directory structures without whitespace allowed
           return nil if @name != @name.downcase || @name.include?(' ')
           # Library path example: ~/.auto/plugin/lib/plugin.rb
-          @library = "#{directory}lib/#{@name}.rb"
+          @library = "#{directory}/lib/#{@name}.rb"
           @library = nil unless File.exists?(@library)
           # Task path example: ~/.auto/plugin/auto/task.rb
           @tasks = { :names => [], :paths => [] }
-          Dir["#{directory}tasks/*.rb"].sort.collect do |path|
+          Dir["#{directory}/tasks/*.rb"].sort.collect do |path|
             @tasks[:paths] << path
             @tasks[:names] << File.basename(path, '.rb')
           end

@@ -3,6 +3,7 @@ module Automaton
     class Runner
       
       def initialize(filename=nil, &block)
+        self.class.require!
         load(filename) if filename
         self.instance_eval(&block) if block
       end
@@ -22,7 +23,7 @@ module Automaton
             rescue
               modu1e = nil
             end
-            if modu1e
+            if modu1e && !included_modules.include?(modu1e)
               include modu1e
             end
           end

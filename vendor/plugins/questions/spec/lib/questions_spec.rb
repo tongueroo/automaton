@@ -1,12 +1,8 @@
-require File.expand_path(File.dirname(__FILE__) + "/../../spec_helper")
+require File.expand_path(File.dirname(__FILE__) + "/../spec_helper")
 
 module Automaton
   module Internal
-    describe Automaton::Internal::Questions do
-      
-      before(:all) do
-        Runner.require!
-      end
+    describe Automaton::Questions do
       
       it 'should store questions' do
         Runner.new do
@@ -29,7 +25,7 @@ module Automaton
           Runner.new do
             questions
           end
-        rescue Questions::QuestionsFinished
+        rescue Questions::Finished
           rescued = true
         end
         rescued.should == true

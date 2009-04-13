@@ -17,9 +17,14 @@ Goals
 * Adding outside scripts and script functionality should be simple
   * Obvious plugin structure
   * Automated installation/updates
-* Running scripts should be simple
-  * Everything available via "auto" command
-  * Easy to debug
+* Running tasks should be simple
+  * Everything available via "auto task" command
+  * Easy to ask questions
+* Sessions
+  * Record input for any number of questions
+  * Replay using "auto session" command
+* Or, use the web interface
+  * Make it easy for novices to use and extend
 
 Install
 -------

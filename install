@@ -5,4 +5,4 @@ AUTOMATON_ENV = false
 require 'rubygems'
 require 'automaton'
 
-Automaton::Internal::Plugins.install
+puts 'Installed!'
