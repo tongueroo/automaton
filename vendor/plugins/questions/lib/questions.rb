@@ -18,6 +18,9 @@ module Automaton
       Questions.running = true
       yield if block
       Questions.running = false
+      Questions.answers.each do |key, value|
+        eval("@#{key} = #{value.inspect}")
+      end
       if Questions.raise_exception_when_finished
         raise Finished
       end
@@ -25,9 +28,11 @@ module Automaton
     
     class Questions
       
+      @@answers = []
       @@order = []
       @@questions = {}
-      cattr_accessor :order, :questions, :raise_exception_when_finished, :running
+      
+      cattr_accessor :answers, :order, :questions, :raise_exception_when_finished, :running
       
       class <<self
         
