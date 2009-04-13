@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 
-AUTOMATON_ENV = false
-
-require 'rubygems'
+$:.push File.expand_path("#{File.dirname(__FILE__)}/../lib")
 require 'automaton'
 
 puts 'Installed!'

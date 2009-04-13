@@ -37,10 +37,10 @@ module Automaton
         end
         
         def tasks
-          t = collector do |plugin|
-            plugin.tasks.merge(:plugin => plugin.name)
+          t = collector { |plugin| plugin.tasks }
+          t.flatten.sort do |a, b|
+            a[:name].gsub(':', '0') <=> b[:name].gsub(':', '0')
           end
-          t.sort { |a, b| a[:plugin] <=> b[:plugin] }
         end
         
       private
@@ -64,10 +64,12 @@ module Automaton
           @library = "#{directory}/lib/#{@name}.rb"
           @library = nil unless File.exists?(@library)
           # Task path example: ~/.auto/plugin/auto/task.rb
-          @tasks = { :names => [], :paths => [] }
-          Dir["#{directory}/auto_tasks/*.rb"].sort.collect do |path|
-            @tasks[:paths] << path
-            @tasks[:names] << File.basename(path, '.rb')
+          @tasks = Dir["#{directory}/auto/**/*.rb"].sort.collect do |path|
+            relative = path.gsub("#{directory}/auto/", '')
+            {
+              :name => relative[0..-4].split('/').join(':'),
+              :path => path
+            }
           end
         end
       end

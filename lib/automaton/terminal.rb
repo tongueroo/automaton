@@ -5,35 +5,23 @@ module Automaton
         args.collect! do |a|
           a.downcase
         end
-        if tasks?(args)
-          tasks(args)
-        elsif rdoc?(args)
-          rdoc(args)
+        if args.empty?
+          list_tasks
+        else
+          run_tasks(args)
         end
       end
       
-      def tasks?(args)
-        args.delete('tasks') ||
-        args.delete('t') ||
-        args.delete('-T')
-      end
-      
-      def tasks
+      def list_tasks
         Plugins.tasks.each do |task|
-          puts "#{task[:plugin]}:"
-          task[:names].each do |name|
-            puts "  #{name}"
-          end
+          puts task[:name]
         end
       end
       
-      def rdoc?(args)
-        args.delete('rdoc') ||
-        args.delete('r')
-      end
-      
-      def rdoc(args)
-        
+      def run_tasks(args)
+        args.each do |task|
+          
+        end
       end
     end
   end

@@ -21,22 +21,16 @@ module Automaton
       it "should provide a hash of plugin task information" do
         @tasks.should == [
           {
-            :plugin => "plugin",
-            :names => ["task"],
-            :paths => ["#{SPEC}/fixtures/plugin/auto_tasks/task.rb"]
+            :path => "/Users/winton/Sites/repositories/active/automaton/spec/fixtures/plugin/auto/plugin/task.rb",
+            :name => "plugin:task"
           },
           {
-            :plugin => "plugin2",
-            :names => ["task", "task2"],
-            :paths => [
-              "#{SPEC}/fixtures/plugin2/auto_tasks/task.rb",
-              "#{SPEC}/fixtures/plugin2/auto_tasks/task2.rb"
-            ]
+            :path => "/Users/winton/Sites/repositories/active/automaton/spec/fixtures/plugin2/auto/plugin2/task.rb",
+            :name => "plugin2:task"
           },
           {
-            :plugin => "questions",
-            :names => [],
-            :paths => []
+            :path => "/Users/winton/Sites/repositories/active/automaton/spec/fixtures/plugin2/auto/plugin2/task2.rb",
+            :name => "plugin2:task2"
           }
         ]
       end

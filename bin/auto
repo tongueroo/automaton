@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
-AUTOMATON_ENV = false
 $:.push File.expand_path("#{File.dirname(__FILE__)}/../lib")
 require 'automaton'
-Automaton::Internal::Terminal.new(ARGV)
+
+module Automaton
+  module Internal
+    Terminal.new(ARGV)
+  end
+end
