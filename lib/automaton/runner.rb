@@ -15,11 +15,7 @@ module Automaton
             require library
             begin
               modu1e = File.basename(library, '.rb').camelize
-              begin
-                modu1e = eval("Automaton::#{modu1e}")
-              rescue
-                modu1e = eval("Automaton::Internal::#{modu1e}")
-              end
+              modu1e = eval("Automaton::#{modu1e}")
             rescue
               modu1e = nil
             end

@@ -23,14 +23,14 @@ module Automaton
           {
             :plugin => "plugin",
             :names => ["task"],
-            :paths => ["#{SPEC}/fixtures/plugin/tasks/task.rb"]
+            :paths => ["#{SPEC}/fixtures/plugin/auto_tasks/task.rb"]
           },
           {
             :plugin => "plugin2",
             :names => ["task", "task2"],
             :paths => [
-              "#{SPEC}/fixtures/plugin2/tasks/task.rb",
-              "#{SPEC}/fixtures/plugin2/tasks/task2.rb"
+              "#{SPEC}/fixtures/plugin2/auto_tasks/task.rb",
+              "#{SPEC}/fixtures/plugin2/auto_tasks/task2.rb"
             ]
           },
           {

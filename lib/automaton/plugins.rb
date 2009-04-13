@@ -65,7 +65,7 @@ module Automaton
           @library = nil unless File.exists?(@library)
           # Task path example: ~/.auto/plugin/auto/task.rb
           @tasks = { :names => [], :paths => [] }
-          Dir["#{directory}/tasks/*.rb"].sort.collect do |path|
+          Dir["#{directory}/auto_tasks/*.rb"].sort.collect do |path|
             @tasks[:paths] << path
             @tasks[:names] << File.basename(path, '.rb')
           end
