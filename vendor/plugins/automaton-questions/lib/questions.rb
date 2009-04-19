@@ -26,13 +26,22 @@ module Automaton
       end
     end
     
+    class Finished < StandardError
+    end
+    
     class Questions
       
       @@answers = []
       @@order = []
       @@questions = {}
       
-      cattr_accessor :answers, :order, :questions, :raise_exception_when_finished, :running
+      cattr_accessor(
+        :answers,
+        :order,
+        :questions,
+        :raise_exception_when_finished,
+        :running
+      )
       
       class <<self
         
@@ -45,9 +54,6 @@ module Automaton
           @@questions[method]
         end
       end
-    end
-    
-    class Finished < StandardError
     end
   end
 end

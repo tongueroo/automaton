@@ -1,8 +1,11 @@
+require 'rubygems'
+
 module Automaton
   module Internal
     class Plugins
       
       @@directories = [
+        Gem.dir,
         "~/.auto",
         "#{File.dirname(__FILE__)}/../../vendor/plugins"
       ]
@@ -21,7 +24,7 @@ module Automaton
         def plugins
           return @@plugins if @@plugins
           directories = @@directories.collect do |d|
-            File.expand_path("#{d}/*/")
+            File.expand_path("#{d}/*automaton-*/")
           end
           @@plugins = Dir[*directories].collect do |d|
             Plugin.new(d)
@@ -57,13 +60,24 @@ module Automaton
         attr_reader :tasks
         
         def initialize(directory)
-          @name = File.basename(directory)
-          # Only downcase directory structures without whitespace allowed
-          return nil if @name != @name.downcase || @name.include?(' ')
-          # Library path example: ~/.auto/plugin/lib/plugin.rb
+          name = File.basename(directory)
+          name = name.split('-')
+          
+          return nil unless name.include?('automaton')
+          case name.length
+          when 4 # user-automaton-plugin-0.0.0
+            name = name[2]
+          when 3, 2 # automaton-plugin-0.0.0 || automaton-plugin
+            name = name[1]
+          end
+          
+          @name = name
+          
+          # ~/.auto/automaton-plugin/lib/plugin.rb
           @library = "#{directory}/lib/#{@name}.rb"
           @library = nil unless File.exists?(@library)
-          # Task path example: ~/.auto/plugin/auto/task.rb
+          
+          # ~/.auto/automaton-plugin/auto/task.rb
           @tasks = Dir["#{directory}/auto/**/*.rb"].sort.collect do |path|
             relative = path.gsub("#{directory}/auto/", '')
             {
