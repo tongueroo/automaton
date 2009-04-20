@@ -15,7 +15,7 @@ module Automaton
       it "should provide an array of plugin library files" do
         @libraries.include?("#{@fixtures}/user-automaton-plugin-0.0.0/lib/plugin.rb").should == true
         @libraries.include?("#{@fixtures}/automaton-plugin2/lib/plugin2.rb").should == true
-        @libraries.length.should == 3
+        @libraries.length.should == 2
       end
       
       it "should provide a hash of plugin task information" do

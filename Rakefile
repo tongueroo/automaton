@@ -33,20 +33,8 @@ task :install do
   `rm #{GEM_NAME}*.gem`
 end
 
-desc 'Run specs'
-task :spec => [ 'spec:automaton', 'spec:plugins' ]
-
-namespace :spec do
-  
-  desc "Run automaton specs"
-  Spec::Rake::SpecTask.new(:automaton) do |t|
-    t.spec_opts = ["--format", "specdoc", "--colour"]
-    t.spec_files = FileList["spec/**/*_spec.rb"]
-  end
-  
-  desc "Run vendor/plugins specs"
-  Spec::Rake::SpecTask.new(:plugins) do |t|
-    t.spec_opts = ["--format", "specdoc", "--colour"]
-    t.spec_files = FileList["vendor/plugins/*/spec/**/*_spec.rb"]
-  end
+desc "Run specs"
+Spec::Rake::SpecTask.new(:spec) do |t|
+  t.spec_opts = ["--format", "specdoc", "--colour"]
+  t.spec_files = FileList["spec/**/*_spec.rb"]
 end
