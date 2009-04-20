@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/winton/'
   
   s.executables << "auto"
-  s.has_rdoc = false
   
   # = MANIFEST =
   s.files = %w[
@@ -24,6 +23,7 @@ Gem::Specification.new do |s|
     lib/automaton.rb
     lib/automaton/class.rb
     lib/automaton/plugins.rb
+    lib/automaton/require.rb
     lib/automaton/runner.rb
     lib/automaton/string.rb
     lib/automaton/terminal.rb

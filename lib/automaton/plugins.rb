@@ -5,7 +5,7 @@ module Automaton
     class Plugins
       
       @@directories = [
-        Gem.dir,
+        Gem.dir + "/gems",
         "~/.auto",
         "#{File.dirname(__FILE__)}/../../vendor/plugins"
       ]
