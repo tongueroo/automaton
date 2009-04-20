@@ -64,14 +64,7 @@ module Automaton
           name = name.split('-')
           
           return nil unless name.include?('automaton')
-          case name.length
-          when 4 # user-automaton-plugin-0.0.0
-            name = name[2]
-          when 3, 2 # automaton-plugin-0.0.0 || automaton-plugin
-            name = name[1]
-          end
-          
-          @name = name
+          @name = name[name.index('automaton') + 1]
           
           # ~/.auto/automaton-plugin/lib/plugin.rb
           @library = "#{directory}/lib/#{@name}.rb"
