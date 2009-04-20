@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 $:.push File.expand_path("#{File.dirname(__FILE__)}/../lib")
-require 'automaton'
+require 'automaton/require'
 
 module Automaton
   module Internal

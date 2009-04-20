@@ -14,13 +14,15 @@ module Automaton
       cattr_accessor :directories
       
       class <<self
-                
+        
+        # Add a directory to the plugin load paths.
         def add(path)
           @@directories << path
           @@directories.uniq!
           @@plugins = nil
         end
         
+        # Returns an array of Plugin instances.
         def plugins
           return @@plugins if @@plugins
           directories = @@directories.collect do |d|
@@ -33,12 +35,12 @@ module Automaton
           @@plugins
         end
         
-        # Collectors
-        
+        # Returns an array of library file paths.
         def libraries
           collector { |plugin| plugin.library }
         end
         
+        # Returns a sorted array of hashes that describe tasks.
         def tasks
           t = collector { |plugin| plugin.tasks }
           t.flatten.sort do |a, b|
@@ -48,17 +50,20 @@ module Automaton
         
       private
         
+        # A quick way to get an array of @@plugins attributes.
         def collector(&block)
           self.plugins.collect { |plugin| block.call(plugin) }.compact
         end
       end
       
+      # Stores a plugin's name, library, and tasks.
       class Plugin
 
         attr_reader :name
         attr_reader :library
         attr_reader :tasks
         
+        # Assigns attributes using a plugin directory path.
         def initialize(directory)
           name = File.basename(directory)
           name = name.split('-')

@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/winton/'
   
   s.executables << "auto"
-  s.extensions  << "install"
   s.has_rdoc = false
   
   # = MANIFEST =
@@ -20,14 +19,21 @@ Gem::Specification.new do |s|
     MIT-LICENSE
     README.markdown
     Rakefile
+    automaton.gemspec
     bin/auto
-    gem_template.gemspec
-    install
     lib/automaton.rb
+    lib/automaton/class.rb
     lib/automaton/plugins.rb
-    spec/fixtures/plugin/lib/plugin.rb
-    spec/lib/automaton.rb
-    spec/lib/automaton/plugins.rb
+    lib/automaton/runner.rb
+    lib/automaton/string.rb
+    lib/automaton/terminal.rb
+    spec/fixtures/automaton-plugin2/auto/plugin2/task.rb
+    spec/fixtures/automaton-plugin2/auto/plugin2/task2.rb
+    spec/fixtures/automaton-plugin2/lib/plugin2.rb
+    spec/fixtures/user-automaton-plugin-0.0.0/auto/plugin/task.rb
+    spec/fixtures/user-automaton-plugin-0.0.0/lib/plugin.rb
+    spec/lib/automaton/plugins_spec.rb
+    spec/lib/automaton/runner_spec.rb
     spec/spec.opts
     spec/spec_helper.rb
   ]

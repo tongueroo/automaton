@@ -4,8 +4,11 @@ module Automaton
       
       def initialize(filename=nil, &block)
         self.class.require!
-        load(filename) if filename
         self.instance_eval(&block) if block
+        if filename
+          load(filename)
+          exit
+        end
       end
       
       class <<self
